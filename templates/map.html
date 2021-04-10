@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AHC Map</title>
-    <link rel="stylesheet" href="map.css">
+    <link rel="stylesheet" type="text/css" href="../src/css/map.css">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
 </head>
 
@@ -47,13 +47,13 @@
             </div>
             <div>
                 <select id="radius" name="radius" onchange="scheduleA.call(this, event)">
-                    <option value="1km">AHC Related</option>
-                    <option value="2km">Reports Only</option>
+                    <option value="AHC Related">AHC Related</option>
+                    <option value="Reports Only">Reports Only</option>
                 </select>
             </div>
         </div>
     </div>
-    <script src="map.js"></script>
+    <script src="../src/js/map.js"></script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE&callback=initMap&libraries=&v=weekly"
         async></script>
