@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AHC Map</title>
+    <link rel="stylesheet" href="map.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-900">
+    <style>
+        a:hover {
+            cursor: pointer;
+            transition: ease 0.35s;
+            border: #374151 solid 1px;
+            border-radius: 12px;
+        }
+
+        a {
+            color: #111827;
+        }
+    </style>
+    <header class="bg-red-800 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <div class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+                <!-- <img id="logo" src="heart.png" alt="img" width="40px" height="40px" /> -->
+                <span class="text-gray-900 ml-3 text-xl font-bold text-2xl">AHCLoc</span>
+            </div>
+            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                <a class="mr-5 hover:text-gray-700 text-lg font-semibold" href="#">AHC Map</a>
+                <a class="mr-5 hover:text-gray-700 text-lg font-semibold" href="#">Report</a>
+                <a class="mr-5 hover:text-gray-700 text-lg font-semibold" href="#">News</a>
+                <a class="mr-5 hover:text-gray-700 text-lg font-semibold" href="#">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+    <div class="bg-gray-900 flex flex-wrap">
+        <div id="rad-p" class="h-screen w-screen">
+            <div id="map" class="h-screen w-screen">
+                <div class="object-fill h-full w-full" style="
+            border: 1px solid #E9E9E9;
+            box-shadow: inset 5px 5px 10px #000000;
+            border-radius: 10px;"></div>
+            </div>
+            <div>
+                <select id="radius" name="radius" onchange="scheduleA.call(this, event)">
+                    <option value="1km">AHC Related</option>
+                    <option value="2km">Reports Only</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <script src="map.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE&callback=initMap&libraries=&v=weekly"
+        async></script>
+
+    </script>
+</body>
+<footer></footer>
+
+</html>
