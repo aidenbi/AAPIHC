@@ -8,6 +8,35 @@
     <title>AHC Map</title>
     <link rel="stylesheet" type="text/css" href="../src/css/map.css">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <script>
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 8,
+                center: { lat: -34.397, lng: 150.644 },
+            });
+            const geocoder = new google.maps.Geocoder();
+            document.getElementById("submit").addEventListener("click", () => {
+                geocodeAddress(geocoder, map);
+            });
+        }
+
+        function geocodeAddress(geocoder, resultsMap) {
+            const address = document.getElementById("address").value;
+            geocoder.geocode({ address: address }, (results, status) => {
+                if (status === "OK") {
+                    resultsMap.setCenter(results[0].geometry.location);
+                    new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location,
+                    });
+                } else {
+                    alert(
+                        "Geocode was not successful for the following reason: " + status
+                    );
+                }
+            });
+        }
+    </script>
 </head>
 
 <body class="bg-gray-900">
@@ -53,12 +82,11 @@
             </div>
         </div>
     </div>
-    <script src="../src/js/map.js"></script>
+
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE&callback=initMap&libraries=&v=weekly"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAavyzeZW4dixFNhsDOMrqRM7tQImAoZu4&callback=initMap&libraries=&v=weekly"
         async></script>
 
-    </script>
 </body>
 <footer></footer>
 

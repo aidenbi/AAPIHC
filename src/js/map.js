@@ -1,20 +1,26 @@
+var geocoder;
+var map;
 function initMap() {
-
-    const uluru = { lat: -25.344, lng: 131.036 };
-
-    const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 4,
-        center: uluru,
-    });
-
-    const marker = new google.maps.Marker({
-        position: uluru,
-        map: map,
-    });
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var mapOptions = {
+        zoom: 8,
+        center: latlng
+    }
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
 }
 
-
-function scheduleA(event) {
-    // alert(this.options[this.selectedIndex].text);
+function codeAddress() {
+    var address = document.getElementById('address').value;
+    geocoder.geocode({ 'address': address }, function (results, status) {
+        if (status == 'OK') {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+        } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+        }
+    });
 }
-
