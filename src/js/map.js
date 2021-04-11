@@ -17,3 +17,4 @@ function initMap() {
 function scheduleA(event) {
     // alert(this.options[this.selectedIndex].text);
 }
+
